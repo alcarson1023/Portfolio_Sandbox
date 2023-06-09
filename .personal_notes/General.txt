@@ -1,0 +1,29 @@
+CTRL + SHIFT + P -> Python: Create Environment
+    Creates new venv
+
+.venv\Scripts\activate
+    Activates the venv (run from "Python/Portfolio")
+
+FOR DEVELOPMENT -
+    python app.py
+        Launches the backend on localhost:5000
+    npm run start-backend
+        Launches a version of the backend that updates as I save files.
+
+    npm start
+        Launches the frontend on localhost:3000
+
+FOR PRODUCTION -
+    flask run
+        Launches a development server? Not sure how this differs.
+            The main difference is that python app.py directly executes
+            the Python script, while flask run relies on the Flask command-line
+            interface (CLI) and automatically detects the Flask app.
+
+    npm run build
+        Creates a build in the build folder. Copy > Paste this over the static/build folder.
+
+    
+
+I've added the following to package.json, may need to remove it later.
+    "proxy": "http://localhost:5000"
