@@ -11,7 +11,7 @@ width: 80vw;
 `;
 
 export const PageContainer = styled.div`
-margin-top: 103px;
+margin-top: 53px;
 margin-left: 10vw;
 width: 74vw;
 height: 100%;
@@ -23,6 +23,7 @@ padding: 3vw;
 
 export const ShadowBox = styled.div`
 margin-left: 10vw;
+margin-top: 50px;
 width: 80vw;
 height: 100vh;
 background-color: gray;
