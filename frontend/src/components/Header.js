@@ -1,9 +1,14 @@
 import React from "react";
 
+import { BigTitle} from '../styles/header_style.js'
+
 const Header = () => {
   return (
     <div>
-      <h3>Header</h3>
+      <BigTitle
+      >
+        ALEXANDER CARSON
+      </BigTitle>
       {/* Add your content for the sub-template */}
     </div>
   );

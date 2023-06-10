@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from "react";
 
-const NavBar = () => {
+import { Button, Container, Title} from '../styles/navBar_style.js'
+
+const NavBar = ({ themeToggle, isDarkTheme, currentPage, setCurrentPage }) => {
+
+  const handleNavClick = (page) => {
+    setCurrentPage(page)
+  }
+
   return (
-    <div>
-      <h3>Navigation Bar</h3>
-      {/* Add your content for the sub-template */}
-    </div>
+    <Container>
+    <Button value="HomePage" onClick={() => handleNavClick('HomePage')}>Home</Button>
+    <Button value="RouteFinder" onClick={() => handleNavClick('RouteFinder')}>Route Finder</Button>
+    {/* <Button $primary>Route Finder</Button> */}
+    <Button onClick={themeToggle}>
+      {isDarkTheme ? "Enable Light Theme" : "Enable Dark Theme"}
+    </Button>
+    </Container>
   );
 };
 
