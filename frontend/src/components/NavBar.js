@@ -12,6 +12,7 @@ const NavBar = ({ themeToggle, isDarkTheme, currentPage, setCurrentPage }) => {
     <Container>
     <Button value="HomePage" onClick={() => handleNavClick('HomePage')}>Home</Button>
     <Button value="RouteFinder" onClick={() => handleNavClick('RouteFinder')}>Route Finder</Button>
+    <Button value="RouteFinder" onClick={() => handleNavClick('Sentiment')}>Sentiment Analysis</Button>
     {/* <Button $primary>Route Finder</Button> */}
     <Button onClick={themeToggle}>
       {isDarkTheme ? "Enable Light Theme" : "Enable Dark Theme"}

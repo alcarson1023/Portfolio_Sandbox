@@ -2,7 +2,6 @@ def return_array(selections):
     return {'result': selections}
 
 def sort_array(selections):
-
     sorted_data = sorted(selections)
     return {'result': sorted_data}
 

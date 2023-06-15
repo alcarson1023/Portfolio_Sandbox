@@ -9,10 +9,12 @@ import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import RouteFinder from "./RouteFinder";
 import HomePage from "./HomePage";
+import Sentiment from "./Sentiment"
 
 const pageComponents = {
   HomePage: HomePage,
   RouteFinder: RouteFinder,
+  Sentiment: Sentiment,
 };
 
 const MainPage = () => {

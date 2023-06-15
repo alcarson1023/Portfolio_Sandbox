@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, send_from_directory, render_template
-import python_scripts.route_finder as route_finder
 import os
+
+import python_scripts.route_finder as route_finder
+import python_scripts.sentiment as sentimentScript
 
 app = Flask(__name__, static_folder='static/static')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -26,6 +28,14 @@ def process():
 def load_page():
     page = request.args.get('page')
     return render_template(page + '.html')
+
+@app.route('/api/sentiment', methods=['POST'])
+def sentiment():
+    data = request.get_json()
+    review = data.get('review')
+    result = sentimentScript.allClear(review)
+
+    return jsonify(result)
 
 @app.route('/api/find_route', methods=['POST'])
 def find_route():
