@@ -10,11 +10,13 @@ import NavBar from "../components/NavBar";
 import RouteFinder from "./RouteFinder";
 import HomePage from "./HomePage";
 import Sentiment from "./Sentiment"
+import Selenium from "./Selenium"
 
 const pageComponents = {
   HomePage: HomePage,
   RouteFinder: RouteFinder,
   Sentiment: Sentiment,
+  Selenium: Selenium,
 };
 
 const MainPage = () => {
