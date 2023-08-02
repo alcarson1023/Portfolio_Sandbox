@@ -19,7 +19,7 @@ const Sentiment = () => {
   return (
     <>
       <h1>Submit a review!</h1>
-      <label htmlFor="reviewInput">Rows:</label>
+      <label htmlFor="reviewInput">Phrase:</label>
       <input
         name="reviewInput"
         id="reviewInput"
@@ -34,7 +34,7 @@ const Sentiment = () => {
       <div 
         name="reviewOutput"
         id="reviewOutput"
-        value={reviewOutput}>Placeholder</div>
+        value={reviewOutput}></div>
     </>
   );
 };

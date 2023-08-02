@@ -28,6 +28,6 @@ export function updateOutput(result) {
   if (result === "Loading...") {
     output.innerHTML = `<p>Loading...</p>`;
   } else {
-    output.innerHTML = `<p>${result[0].label}</p><p>Confidence: ${result[0].score}</p>`;
+    output.innerHTML = `<p>${result[0].label}</p><p>Confidence: ${(result[0].score * 100).toFixed(2)}%</p>`;
   }
 }

@@ -1,17 +1,21 @@
 import { Stage, Layer, Rect, Line } from "konva";
 
-export function createGrid(rows, columns) {
+
+
+let selectionsList = [];
+
+export function createGrid(gridSize) {
   const gridContainer = document.getElementById("gridContainer");
 
   // Clear previous grid if any
   gridContainer.innerHTML = "";
 
   // Generate the grid dynamically
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < columns; c++) {
+  for (let r = 0; r < gridSize; r++) {
+    for (let c = 0; c < gridSize; c++) {
       const square = document.createElement("div");
       square.classList.add("gridSquare");
-      square.id = `${r}${c}`;
+      square.id = `${c}${r}`;
 
       // Add click event listener to toggle square color
       square.addEventListener("click", toggleSquareColor);
@@ -26,20 +30,19 @@ export function createGrid(rows, columns) {
   }
   const hiddenButton = document.getElementById("submitSection");
   hiddenButton.classList.remove("hidden");
-  console.log("Attempted to un-hide everything!");
+  selectionsList = [];
 }
 
-let selectionsList = []; // Empty this out for actual runs
 
 export function toggleSquareColor(event) {
   const square = event.target;
   square.classList.toggle("selected");
 
   if (square.classList.contains("selected")) {
-    console.log(`Clicked gridSquare: ${square.id}`);
+    // console.log(`Clicked gridSquare: ${square.id}`);
     selectionsList.push(square.id);
   } else {
-    console.log(`Unclicked gridSquare: ${square.id}`);
+    // console.log(`Unclicked gridSquare: ${square.id}`);
     let index = selectionsList.indexOf(square.id);
     selectionsList.splice(index, 1);
   }
@@ -48,13 +51,14 @@ export function toggleSquareColor(event) {
 // const submitGridButton = document.getElementById("routeSubmitButton");
 // createGridButton.addEventListener("click", submitGrid);
 
-export function submitGrid(method) {
+export function submitGrid(method, gridSize) {
   const sendToPython = {
     method: method,
     selectionsList: selectionsList,
+    gridSize: gridSize
   };
 
-  console.log("method: ", method, "selectionsList: ", selectionsList);
+  console.log("method: ", method, "selectionsList: ", selectionsList, "gridSize: ", gridSize);
 
   fetch("/api/find_route", {
     method: "POST",
@@ -67,7 +71,7 @@ export function submitGrid(method) {
     .then((data) => {
       // Handle the response from Flask
       updateGrid(data.result);
-      plotRoute(data.result);
+      plotRoute(data.result, gridSize);
       console.log(data);
     })
     .catch((error) => {
@@ -86,9 +90,9 @@ export function updateGrid(newArray) {
   }
 }
 
-export function plotRoute(result) {
-  const gridSize = 5; // Adjust the grid size as needed
-  const cellSize = 100; // Adjust the cell size as needed
+export function plotRoute(result, gridSize) {
+  console.log(gridSize)
+  const cellSize = 50; // Adjust the cell size as needed
 
   const stage = new Stage({
     container: "container",
@@ -117,7 +121,9 @@ export function plotRoute(result) {
           y: y * cellSize,
           width: cellSize,
           height: cellSize,
-          stroke: "#ccc",
+          stroke: "#000",
+          strokeWidth: 0,
+          listening: false
         });
         layer.add(rect);
       }
@@ -131,7 +137,7 @@ export function plotRoute(result) {
     coordinates.length = 0;
 
     for (let i = 0; i < result.length; i++) {
-      let newPoint = [result[i][1], result[i][0]];
+      let newPoint = [result[i][0], result[i][1]];
       coordinates.push(newPoint);
     }
   }

@@ -3,14 +3,18 @@ import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../components/globalStyles";
 import { lightTheme, darkTheme } from "../components/Themes";
-import { FixedContent, PageContainer, ShadowBox } from "../styles/basePage_style.js";
+import {
+  FixedContent,
+  PageContainer,
+  ShadowBox,
+} from "../styles/basePage_style.js";
 
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import RouteFinder from "./RouteFinder";
 import HomePage from "./HomePage";
-import Sentiment from "./Sentiment"
-import Selenium from "./Selenium"
+import Sentiment from "./Sentiment";
+import Selenium from "./Selenium";
 
 const pageComponents = {
   HomePage: HomePage,
@@ -32,19 +36,19 @@ const MainPage = () => {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <FixedContent>
         <GlobalStyles />
-        <Header/>
+        <Header />
         <NavBar
           isDarkTheme={isDarkTheme}
           themeToggle={themeToggle}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          style={{ "z-index": "-999", "background-color": "orange"}}
+          // style={{ "z-index": "-999", "background-color": "orange" }}
         />
       </FixedContent>
-      <ShadowBox />
-      <PageContainer>
-        <CurrentPage />
-      </PageContainer>
+        <ShadowBox />
+        <PageContainer>
+          <CurrentPage />
+        </PageContainer>
     </ThemeProvider>
   );
 };

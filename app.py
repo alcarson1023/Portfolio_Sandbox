@@ -62,8 +62,13 @@ def find_route():
         result = route_finder.return_array(selections)
     elif method == 'sort':
         result = route_finder.sort_array(selections)
+    elif method == 'nearest_point':
+        result = route_finder.nearest_point(selections)
+    elif method == 'pythagorean':
+        result = route_finder.pythagorean(selections)
     else:
         result = route_finder.method_error(method, selections)
+        
     # Return the analysis result as a JSON response
     return jsonify(result)
     # Remember to handle any potential errors and validate the data
@@ -102,11 +107,18 @@ def handle_update(data):
     # Code to handle custom event with data
     return('Update socket works!')
 
+@socketio.on('selenium-submit')
+def handle_selenium_submit(data):
+    data = {'key': 'value'}
+    # Emit the custom event with the data
+    socketio.emit('custom_event_response', data)
+    # Code to handle custom event with data
+    return('Custom event socket works!')
+
 @socketio.on('custom-event')
 def handle_custom_event(data):
     # Perform some action and gather data
     data = {'key': 'value'}
-
     # Emit the custom event with the data
     socketio.emit('custom_event_response', data)
     # Code to handle custom event with data

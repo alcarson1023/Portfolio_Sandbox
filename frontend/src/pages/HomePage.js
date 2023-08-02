@@ -1,11 +1,19 @@
 import React from "react";
 
-// import { BigTitle} from '../styles/header_style.js'
+import HomePageRight from './right-descriptive/HomePageRight'
+import {BothPanels, LeftPanel, RightPanel} from "../styles/basePage_style.js";
 
 const HomePage = () => {
   return (
-    <div>This is the Home Page!
-    </div>
+    <BothPanels>
+    <h1 className="header">Welcome To My Site!</h1>
+    <LeftPanel>
+    This is Home Page Left!
+    </LeftPanel>
+    <RightPanel>
+    <HomePageRight />
+    </RightPanel>
+    </BothPanels>
   );
 };
 

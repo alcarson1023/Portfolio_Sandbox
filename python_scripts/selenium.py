@@ -23,7 +23,12 @@ startTime = time.time()
 
 def run_selenium(input):
     print('Running Selenium')
-    driver.get('https://www.wikipedia.com')
+    driver.get('https://www.google.com')
+    
+    time.sleep(3)
+    ActionChains(driver).send_keys(input).perform()
+    ActionChains(driver).send_keys(Keys.ENTER).perform()
+    # driver.get('https://www.wikipedia.com')
     
     waitStart = time.time()
     waitTime = round(time.time()-waitStart,3)

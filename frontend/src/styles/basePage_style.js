@@ -32,6 +32,29 @@ position: fixed;
 z-index: 0;
 `;
 
+export const CodeBlock = styled.div`
+display: flex;
+flex-wrap: wrap;
+`;
+
+export const BothPanels = styled.div`
+display: flex;
+flex-wrap: wrap;
+`;
+  
+export const LeftPanel = styled.div`
+width: 50%;
+flex: 1;
+`;
+
+export const RightPanel = styled.div`
+width: 50%;
+flex: 1;
+`;
+
+export const Header = styled.div`
+width: 100%;
+`;
 
 // Put another fixed box behind the page content, and give that one a shadow.
 

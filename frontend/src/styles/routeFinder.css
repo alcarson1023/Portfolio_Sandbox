@@ -27,9 +27,27 @@
   }
   
   #container {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #ccc;
+    top: 152px;
     position: absolute;
+    opacity: 10;
+    pointer-events: none;
+  }
+
+  .bothPanels {
+    display: flex;
+    flex-wrap: wrap;
   }
   
+  .leftPanel {
+    width: 50%;
+    flex: 1;
+  }
+  
+  .rightPanel {
+    width: 50%;
+    flex: 1;
+  }
+
+  .header {
+    width: 100%;
+  }
