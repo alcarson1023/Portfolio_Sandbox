@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Konva from "konva";
 import * as scripts from "../scripts/routeFinder.js";
 import "../styles/routeFinder.css";
-import { BothPanels, LeftPanel, RightPanel } from "../styles/basePage_style.js";
+import {BothPanels, LeftPanel, RightPanel, Header} from "../styles/basePage_style.js";
 import RouteFinderRight from "./right-descriptive/RouteFinderRight.js";
 
 function RouteFinder() {
@@ -25,8 +25,9 @@ function RouteFinder() {
   };
 
   return (
+    <>
+    <Header><h1>Welcome To RouteFinder!</h1></Header>
     <BothPanels>
-      <h1 className="header">Welcome To RouteFinder!</h1>
       <LeftPanel>
         <label htmlFor="gridSize">Grid Size:</label>
         <select
@@ -76,11 +77,11 @@ function RouteFinder() {
 
         <script src="../scripts/route_finder.js"></script>
       </LeftPanel>
-
       <RightPanel>
         <RouteFinderRight method={method}/>
-      </RightPanel>
+        </RightPanel>
     </BothPanels>
+    </>
   );
 }
 

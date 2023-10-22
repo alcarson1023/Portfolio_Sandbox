@@ -2,10 +2,13 @@ import math
 
 
 def return_array(selections):
+
     return {'result': selections}
 
 def sort_array(selections):
+
     sorted_data = sorted(selections)
+    
     return {'result': sorted_data}
 
 
@@ -38,19 +41,14 @@ def nearest_point(selections):
 # This breaks from the loop when a point is found, rather than finishing the loop and then breaking.
                     if potential_point in unused_points:
                         # When the next point is found: set it as current > remove it from unused list > add it to the path > reset search distance
-                        print('Point to remove:', potential_point)
-                        print('Removing from list:', unused_points)
                         current_point = potential_point
                         unused_points.remove(current_point)
-                        print('Remaining unused points: ', unused_points)
                         chosen_path.append(current_point)
                         search_distance = 0 # Resets search distance each time a new point is found. Next line increase distance, so we start at 0                        
                         break
 
-            print("Increasing radius")
             search_distance += 1 # Increase the search radius if no matches are found.
 
-    print('Chosen path:', chosen_path)
     return {'result': chosen_path}
 
 def pythagorean(selections):
@@ -76,14 +74,12 @@ def pythagorean(selections):
             distance_list.append(distance)
 
 # Once the loop is finished, the index of the shortest distance will match the index of the closest node.
-        print(distance_list)
         index = distance_list.index(min(distance_list)) # Find the index of the shortest distance available
         closest_node = unused_points[index]
         current_point = closest_node
         unused_points.remove(current_point)
         chosen_path.append(current_point)
 
-    print('Chosen path:', chosen_path)
     return {'result': chosen_path}
 
 

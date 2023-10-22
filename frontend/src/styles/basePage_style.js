@@ -35,6 +35,8 @@ z-index: 0;
 export const CodeBlock = styled.div`
 display: flex;
 flex-wrap: wrap;
+font-family: monospace;
+width: 100%;
 `;
 
 export const BothPanels = styled.div`
@@ -45,15 +47,28 @@ flex-wrap: wrap;
 export const LeftPanel = styled.div`
 width: 50%;
 flex: 1;
+box-sizing: border-box;
+padding: 10px;
 `;
 
 export const RightPanel = styled.div`
 width: 50%;
 flex: 1;
+background-color: lightslategray;
+box-sizing: border-box;
+padding: 10px;
 `;
 
 export const Header = styled.div`
+text-align: center;
 width: 100%;
+flex: 1;
+`;
+
+export const PanelButton = styled.div`
+width: 100%;
+flex: 1;
+color: orange;
 `;
 
 // Put another fixed box behind the page content, and give that one a shadow.

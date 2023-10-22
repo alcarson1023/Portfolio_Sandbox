@@ -5,6 +5,7 @@ import os
 import python_scripts.route_finder as route_finder
 import python_scripts.sentiment as sentimentScript
 import python_scripts.selenium as seleniumScript
+import python_scripts.liquid as liquidScript
 
 app = Flask(__name__, static_folder='static/static')
 socketio = SocketIO(app)
@@ -48,6 +49,14 @@ def selenium():
     data = request.get_json()
     seleniumArgs = data.get('seleniumArgs')
     result = seleniumScript.run_selenium(seleniumArgs)
+
+    return jsonify(result)
+
+@app.route('/api/liquid', methods=['POST'])
+def liquid():
+    data = request.get_json()
+    liquidRequest = data.get('liquidRequest')
+    result = liquidScript.run_liquid(liquidRequest)
 
     return jsonify(result)
 

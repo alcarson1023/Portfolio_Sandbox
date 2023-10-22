@@ -15,12 +15,14 @@ import RouteFinder from "./RouteFinder";
 import HomePage from "./HomePage";
 import Sentiment from "./Sentiment";
 import Selenium from "./Selenium";
+import Liquid from "./Liquid";
 
 const pageComponents = {
   HomePage: HomePage,
   RouteFinder: RouteFinder,
   Sentiment: Sentiment,
   Selenium: Selenium,
+  Liquid: Liquid,
 };
 
 const MainPage = () => {

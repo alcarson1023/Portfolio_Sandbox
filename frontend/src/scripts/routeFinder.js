@@ -15,7 +15,11 @@ export function createGrid(gridSize) {
     for (let c = 0; c < gridSize; c++) {
       const square = document.createElement("div");
       square.classList.add("gridSquare");
-      square.id = `${c}${r}`;
+      square.id = `${r}${c}`;
+// I've switched the orders of "r" and "c" above, so the grid no longer follows the (x,y) structure but can now be read as shown below. This makes the coordinates easier to work with.
+// (01, 02, 03)
+// (11, 12, 13)
+// (21, 22, 23)
 
       // Add click event listener to toggle square color
       square.addEventListener("click", toggleSquareColor);
@@ -137,7 +141,8 @@ export function plotRoute(result, gridSize) {
     coordinates.length = 0;
 
     for (let i = 0; i < result.length; i++) {
-      let newPoint = [result[i][0], result[i][1]];
+      let newPoint = [result[i][1], result[i][0]];
+    // The indexes above have been flipped to account for the coordinates being formatted as (y, x) rather than (x, y) for ease of use.
       coordinates.push(newPoint);
     }
   }
