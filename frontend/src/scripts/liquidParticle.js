@@ -54,8 +54,8 @@ class Particle extends React.Component {
         continue; // Skip self-check
       }
 
-      const dx = particle.state.x - x;
-      const dy = particle.state.y - y;
+      const dx = particle.ref.current.state.x - x;
+      const dy = particle.ref.current.state.y - y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < 2 * radius) {
@@ -66,16 +66,18 @@ class Particle extends React.Component {
         const thisSpeed = Math.sqrt(
           velocityX * velocityX + velocityY * velocityY
         );
-        
+
         const otherSpeed = Math.sqrt(
-          particle.state.velocityX * particle.state.velocityX +
-            particle.state.velocityY * particle.state.velocityY
+          particle.ref.current.state.velocityX *
+            particle.ref.current.state.velocityX +
+            particle.ref.current.state.velocityY *
+              particle.ref.current.state.velocityY
         );
 
         const thisDirection = Math.atan2(velocityY, velocityX);
         const otherDirection = Math.atan2(
-          particle.state.velocityY,
-          particle.state.velocityX
+          particle.ref.current.state.velocityY,
+          particle.ref.current.state.velocityX
         );
 
         // Update velocities
@@ -84,7 +86,7 @@ class Particle extends React.Component {
           velocityY: otherSpeed * Math.sin(otherDirection - collisionAngle),
         });
 
-        particle.setState({
+        particle.ref.current.setState({
           velocityX: thisSpeed * Math.cos(thisDirection - collisionAngle),
           velocityY: thisSpeed * Math.sin(thisDirection - collisionAngle),
         });

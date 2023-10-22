@@ -4,7 +4,7 @@ import Particle from "../scripts/liquidParticle.js";
 
 class ParticleSimulation extends Component {
   state = {
-    numberOfParticles: 5,
+    numberOfParticles: 50,
     particles: [], // Define and initialize the particles array
   };
 
@@ -14,6 +14,7 @@ class ParticleSimulation extends Component {
       key: index,
       ref: React.createRef(),
     }));
+    
     this.setState({ particles });
   }
 
